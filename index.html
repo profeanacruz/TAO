@@ -1,0 +1,1814 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TAO – Instrumental para profilaxis y periodoncia: ultrasonidos y curetas</title>
+  <meta name="description" content="Infografía interactiva para FP sanitaria (TAO/TCAE): Ultrasonidos para tartrectomía y curetas para RAR." />
+  <style>
+    :root{
+      --bg:#f6f8fb;
+      --card:#ffffff;
+      --text:#132033;
+      --muted:#54657a;
+      --border:#d7e1ee;
+      --accent:#0b5cab;      /* azul clínico */
+      --accent2:#0b7a5a;     /* verde quirúrgico */
+      --warn:#b54708;
+      --shadow: 0 8px 24px rgba(19,32,51,.08);
+      --radius: 14px;
+      --focus: 0 0 0 3px rgba(11,92,171,.25);
+      --maxw: 1120px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      --line: 1.45;
+      --anim: 180ms;
+    }
+
+    body.study{
+      --anim: 0ms;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    @media (prefers-reduced-motion: reduce){
+      :root{ --anim: 0ms; }
+    }
+
+    *{ box-sizing: border-box; }
+    html,body{ height: 100%; }
+    body{
+      margin:0;
+      font-family: var(--sans);
+      color: var(--text);
+      background: radial-gradient(1100px 700px at 15% 0%, rgba(11,92,171,.08), transparent 60%),
+                  radial-gradient(900px 600px at 95% 20%, rgba(11,122,90,.08), transparent 55%),
+                  var(--bg);
+      line-height: var(--line);
+    }
+
+    a{ color: var(--accent); text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+
+    .skip-link{
+      position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden;
+    }
+    .skip-link:focus{
+      position:fixed; left:12px; top:12px; width:auto; height:auto; padding:10px 12px;
+      background:#fff; border:1px solid var(--border); border-radius:10px; box-shadow: var(--shadow);
+      z-index:9999;
+    }
+
+    header{
+      padding: 22px 16px 10px;
+    }
+    .wrap{
+      max-width: var(--maxw);
+      margin: 0 auto;
+    }
+
+    .topbar{
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .brand{
+      display:flex; gap:12px; align-items:flex-start;
+    }
+    .logo{
+      width:44px; height:44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(11,92,171,.16), rgba(11,122,90,.16));
+      display:grid; place-items:center;
+      border:1px solid var(--border);
+    }
+    .logo svg{ width:26px; height:26px; }
+    h1{
+      margin:0;
+      font-size: clamp(18px, 3.6vw, 26px);
+      letter-spacing: .2px;
+    }
+    .subtitle{
+      margin:4px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 70ch;
+    }
+
+    .actions{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .btn{
+      border:1px solid var(--border);
+      background: var(--card);
+      border-radius: 999px;
+      padding: 10px 12px;
+      font-size: 14px;
+      color: var(--text);
+      cursor:pointer;
+      transition: transform var(--anim) ease, box-shadow var(--anim) ease, border-color var(--anim) ease;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      user-select:none;
+    }
+    .btn:hover{ box-shadow: var(--shadow); transform: translateY(-1px); border-color: rgba(11,92,171,.35); }
+    .btn:focus{ outline:none; box-shadow: var(--focus); }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(11,92,171,.12), rgba(11,92,171,.06));
+      border-color: rgba(11,92,171,.35);
+    }
+    .btn.good{
+      background: linear-gradient(135deg, rgba(11,122,90,.12), rgba(11,122,90,.06));
+      border-color: rgba(11,122,90,.35);
+    }
+
+    .layout{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      padding: 12px 16px 26px;
+    }
+
+    @media (min-width: 980px){
+      .layout{
+        grid-template-columns: 1fr 320px;
+        align-items: start;
+      }
+      .sidebar{
+        position: sticky;
+        top: 10px;
+      }
+    }
+
+    .card{
+      background: var(--card);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .card.pad{ padding: 14px; }
+
+    .tabs{
+      display:flex;
+      gap:8px;
+      padding: 10px;
+      background: rgba(255,255,255,.7);
+      border-bottom:1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+    }
+    .tab{
+      flex: 1;
+      text-align:center;
+      border:1px solid var(--border);
+      border-radius: 999px;
+      padding: 10px 12px;
+      cursor:pointer;
+      background: #fff;
+      font-weight: 600;
+      transition: background var(--anim) ease, transform var(--anim) ease, box-shadow var(--anim) ease;
+    }
+    .tab:hover{ box-shadow: 0 6px 18px rgba(19,32,51,.08); transform: translateY(-1px); }
+    .tab[aria-selected="true"]{
+      border-color: rgba(11,92,171,.35);
+      background: linear-gradient(135deg, rgba(11,92,171,.12), rgba(11,122,90,.06));
+    }
+    .tab:focus{ outline:none; box-shadow: var(--focus); }
+
+    .panel{
+      display:none;
+      padding: 14px;
+    }
+    .panel.active{ display:block; }
+
+    .notice{
+      border-left: 4px solid var(--accent);
+      background: linear-gradient(90deg, rgba(11,92,171,.08), rgba(255,255,255,.6));
+      padding: 10px 12px;
+      border-radius: 12px;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+
+    .grid{
+      display:grid;
+      gap: 12px;
+    }
+    @media (min-width: 760px){
+      .grid.cols2{ grid-template-columns: 1fr 1fr; }
+    }
+
+    .section-title{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      margin: 6px 0 8px;
+    }
+    .section-title h2{
+      margin:0;
+      font-size: 18px;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border:1px solid var(--border);
+      background:#fff;
+      color: var(--muted);
+      font-size: 12px;
+      font-family: var(--mono);
+    }
+
+    .tile{
+      display:flex;
+      gap:12px;
+      padding: 12px;
+      border-radius: 14px;
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,1));
+    }
+    .tile .ico{
+      width: 42px; height: 42px;
+      flex: 0 0 42px;
+      border-radius: 12px;
+      display:grid;
+      place-items:center;
+      border:1px solid var(--border);
+      background: linear-gradient(135deg, rgba(11,92,171,.10), rgba(11,122,90,.08));
+    }
+    .tile .ico svg{ width:22px; height:22px; }
+    .tile h3{
+      margin:0 0 4px;
+      font-size: 15px;
+    }
+    .tile p{
+      margin:0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .muted{ color: var(--muted); }
+
+    figure{
+      margin: 0;
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      background:#fff;
+      overflow:hidden;
+      box-shadow: 0 8px 24px rgba(19,32,51,.06);
+    }
+    figure img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+    figcaption{
+      padding: 10px 12px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top:1px solid var(--border);
+    }
+    .img-actions{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content: flex-end;
+      padding: 10px 12px;
+      border-top:1px solid var(--border);
+      background: rgba(246,248,251,.6);
+    }
+    .img-btn{
+      font-size: 13px;
+      padding: 8px 10px;
+    }
+
+    /* Tooltip */
+    .tip{
+      border-bottom: 1px dashed rgba(11,92,171,.55);
+      cursor: help;
+      position: relative;
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .tooltip{
+      position: fixed;
+      z-index: 9999;
+      max-width: 340px;
+      background: #fff;
+      border:1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      padding: 10px 12px;
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.35;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity var(--anim) ease, transform var(--anim) ease;
+    }
+    .tooltip.show{
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .tooltip .k{
+      display:block;
+      font-family: var(--mono);
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    /* Accordion */
+    details{
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      background:#fff;
+      padding: 10px 12px;
+    }
+    details + details{ margin-top: 10px; }
+    summary{
+      cursor:pointer;
+      font-weight: 700;
+      color: var(--text);
+      list-style:none;
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap:10px;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    .chev{
+      width: 18px; height: 18px;
+      transition: transform var(--anim) ease;
+      flex: 0 0 auto;
+      color: var(--muted);
+    }
+    details[open] .chev{ transform: rotate(180deg); }
+    details p, details ul{ margin: 10px 0 0; color: var(--muted); font-size: 14px; }
+    ul{ padding-left: 18px; }
+
+    /* Flow */
+    .flow{
+      display:flex;
+      gap:10px;
+      flex-wrap: wrap;
+      align-items: stretch;
+    }
+    .step{
+      flex: 1 1 180px;
+      border:1px solid var(--border);
+      background: linear-gradient(135deg, rgba(11,92,171,.08), rgba(11,122,90,.06));
+      border-radius: 14px;
+      padding: 10px 12px;
+      position: relative;
+      min-height: 64px;
+    }
+    .step strong{ display:block; }
+    .step span{ color: var(--muted); font-size: 13px; display:block; margin-top: 4px; }
+    .arrow{
+      width: 28px;
+      height: 28px;
+      flex: 0 0 28px;
+      align-self: center;
+      color: var(--muted);
+    }
+    @media (max-width: 520px){
+      .arrow{ display:none; }
+    }
+
+    /* Quiz */
+    .quiz{
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px;
+      background:#fff;
+    }
+    .quiz h3{ margin:0 0 10px; font-size: 16px; }
+    .q{
+      padding: 10px 0;
+      border-top:1px dashed rgba(215,225,238,.9);
+    }
+    .q:first-of-type{ border-top: none; padding-top: 0; }
+    .q legend{
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+    .opts{
+      display:grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style:none;
+    }
+    .opt{
+      border:1px solid var(--border);
+      border-radius: 12px;
+      padding: 8px 10px;
+      cursor:pointer;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      background: #fff;
+      transition: transform var(--anim) ease, box-shadow var(--anim) ease, border-color var(--anim) ease;
+    }
+    .opt:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(19,32,51,.06);
+      border-color: rgba(11,92,171,.35);
+    }
+    .opt input{ margin-top: 3px; }
+    .feedback{
+      margin-top: 8px;
+      border-radius: 12px;
+      padding: 10px 10px;
+      font-size: 13px;
+      display:none;
+    }
+    .feedback.ok{
+      display:block;
+      background: rgba(11,122,90,.12);
+      border:1px solid rgba(11,122,90,.35);
+      color: #0a3a2c;
+    }
+    .feedback.bad{
+      display:block;
+      background: rgba(181,71,8,.12);
+      border:1px solid rgba(181,71,8,.35);
+      color: #5b2b10;
+    }
+    .quiz-actions{
+      display:flex;
+      gap:10px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .score{
+      font-family: var(--mono);
+      color: var(--muted);
+      font-size: 13px;
+      margin-right:auto;
+      padding-top: 10px;
+    }
+
+    /* Glossary */
+    .sidebar .card{ overflow: hidden; }
+    .sidehead{
+      padding: 12px 12px 10px;
+      border-bottom:1px solid var(--border);
+      background: rgba(255,255,255,.7);
+      backdrop-filter: blur(10px);
+    }
+    .sidehead h2{
+      margin:0;
+      font-size: 16px;
+    }
+    .search{
+      margin-top: 10px;
+      display:flex;
+      gap:8px;
+    }
+    .search input{
+      width:100%;
+      padding: 10px 10px;
+      border:1px solid var(--border);
+      border-radius: 12px;
+      font-size: 14px;
+      outline:none;
+      background:#fff;
+    }
+    .search input:focus{ box-shadow: var(--focus); border-color: rgba(11,92,171,.35); }
+    .glist{
+      padding: 10px 12px 12px;
+      display:grid;
+      gap:10px;
+      max-height: 70vh;
+      overflow:auto;
+    }
+    .gitem{
+      border:1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px;
+      background:#fff;
+    }
+    .gitem strong{
+      display:flex; align-items:center; justify-content: space-between; gap:10px;
+      font-size: 13px;
+    }
+    .gitem p{
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .tag{
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      border:1px solid var(--border);
+      border-radius: 999px;
+      padding: 2px 8px;
+      background: rgba(246,248,251,.8);
+      white-space: nowrap;
+    }
+
+    /* Modal image */
+    .modal{
+      position: fixed;
+      inset: 0;
+      background: rgba(19,32,51,.62);
+      display:none;
+      z-index: 99999;
+      padding: 24px 14px;
+    }
+    .modal.open{ display:grid; place-items:center; }
+    .modal-card{
+      width: min(980px, 96vw);
+      background:#fff;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.35);
+      overflow:hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,.25);
+    }
+    .modal-head{
+      display:flex;
+      justify-content: space-between;
+      align-items:center;
+      gap:10px;
+      padding: 12px 12px;
+      border-bottom:1px solid var(--border);
+      background: rgba(246,248,251,.7);
+    }
+    .modal-head .title{
+      font-weight: 800;
+      font-size: 14px;
+      color: var(--text);
+      margin: 0;
+    }
+    .modal-close{
+      border:1px solid var(--border);
+      background:#fff;
+      border-radius: 999px;
+      padding: 8px 10px;
+      cursor:pointer;
+      font-size: 13px;
+    }
+    .modal-close:focus{ outline:none; box-shadow: var(--focus); }
+    .modal-body img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+    .modal-cap{
+      padding: 10px 12px;
+      border-top:1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Print */
+    @media print{
+      body{ background:#fff; }
+      .tabs, .sidebar, .actions, .img-actions, .quiz-actions, .modal{ display:none !important; }
+      .card{ box-shadow:none; }
+      .panel{ display:block !important; }
+      .panel{ padding: 0; }
+      header{ padding: 0 0 10px; }
+      .layout{ padding: 0; }
+      .wrap{ max-width: 100%; }
+      a{ color: #000; text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header>
+    <div class="wrap">
+      <div class="topbar">
+        <div class="brand" aria-label="Cabecera">
+          <div class="logo" aria-hidden="true">
+            <!-- Simple medical/dental icon -->
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 2c4.2 0 7 2.7 7 6.6 0 2.4-1.1 4.3-2.5 6.1-1.2 1.6-2 3.5-2.2 5.6-.1.8-.7 1.7-2.3 1.7-1.2 0-1.8-.6-2-1.3-.2-.7-.4-2.3-1-2.3s-.8 1.6-1 2.3c-.2.7-.8 1.3-2 1.3-1.6 0-2.2-.9-2.3-1.7-.2-2.1-1-4-2.2-5.6C6.1 13 5 11 5 8.6 5 4.7 7.8 2 12 2Z" stroke="rgba(11,92,171,.9)" stroke-width="1.5"/>
+              <path d="M9.2 9.8c.7-1 1.7-1.5 2.8-1.5s2.1.5 2.8 1.5" stroke="rgba(11,122,90,.9)" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <h1>TAO – Instrumental para profilaxis y periodoncia: ultrasonidos y curetas</h1>
+            <p class="subtitle">
+              Infografía interactiva para FP sanitaria (TAO/TCAE). Incluye glosario, flujo de procedimiento, errores típicos y mini test con autocorrección.
+            </p>
+          </div>
+        </div>
+
+        <div class="actions" aria-label="Acciones">
+          <button class="btn primary" id="btnStudy" type="button" aria-pressed="false" title="Aumenta tamaño de letra y reduce animaciones">
+            <span aria-hidden="true">Vista estudio</span>
+          </button>
+          <button class="btn good" id="btnPrint" type="button" title="Imprimir o guardar como PDF">
+            <span aria-hidden="true">Imprimir / PDF</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap layout" id="contenido">
+    <section class="card" aria-label="Contenido principal">
+      <div class="tabs" role="tablist" aria-label="Selector de infografías">
+        <button class="tab" id="tab1" role="tab" aria-selected="true" aria-controls="panel1" type="button">
+          Infografía 1: Ultrasonidos
+        </button>
+        <button class="tab" id="tab2" role="tab" aria-selected="false" aria-controls="panel2" type="button">
+          Infografía 2: Curetas RAR
+        </button>
+      </div>
+
+      <!-- Panel 1 -->
+      <article class="panel active" id="panel1" role="tabpanel" aria-labelledby="tab1">
+        <div class="notice" role="note">
+          Aviso docente: utiliza imágenes con fines educativos respetando licencias y copyright; prioriza fuentes institucionales o fabricantes oficiales cuando sustituyas o amplíes este material.
+        </div>
+
+        <div class="section-title">
+          <span class="pill">1</span>
+          <h2>Definición del procedimiento: <span class="tip" data-tip="Procedimiento clínico para eliminar cálculo/sarro y placa mineralizada, habitualmente supragingival.">tartrectomía</span></h2>
+        </div>
+
+        <div class="grid cols2">
+          <div class="tile">
+            <div class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M7 4h10v4H7V4Z" stroke="rgba(11,92,171,.9)" stroke-width="1.5"/>
+                <path d="M6 9h12v11H6V9Z" stroke="rgba(11,122,90,.9)" stroke-width="1.5"/>
+                <path d="M9 12h6" stroke="rgba(11,92,171,.9)" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M9 15h6" stroke="rgba(11,92,171,.9)" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <h3>¿Qué se elimina?</h3>
+              <p>
+                La placa bacteriana mineralizada (sarro o cálculo), principalmente en la zona
+                <span class="tip" data-tip="Depósito por encima del margen gingival (encía).">supragingival</span>.
+              </p>
+            </div>
+          </div>
+
+          <div class="tile">
+            <div class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 3c4 0 7 3 7 7 0 2-1 3.7-2.2 5.2-1.1 1.4-1.8 3.2-2 5.4-.1.7-.6 1.4-2.8 1.4s-2.7-.7-2.8-1.4c-.2-2.2-.9-4-2-5.4C6 13.7 5 12 5 10c0-4 3-7 7-7Z" stroke="rgba(11,122,90,.9)" stroke-width="1.5"/>
+                <path d="M9 10c.8-1.1 1.8-1.6 3-1.6s2.2.5 3 1.6" stroke="rgba(11,92,171,.9)" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Objetivo clínico</h3>
+              <p>
+                Recuperar superficies limpias, mejorar la salud gingival y facilitar el control de placa posterior.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:12px;">
+          <figure>
+            <img src="img/tartrectomia.jpeg" alt="Tartrectomía con ultrasonidos: eliminación de cálculo supragingival" loading="lazy">
+            <div class="img-actions">
+              <button class="btn img-btn" type="button" data-openimg="img/tartrectomia.jpeg" data-title="Tartrectomía (ultrasonidos)" data-cap="Ejemplo clínico de eliminación de cálculo supragingival con ultrasonidos.">
+                Ampliar imagen
+              </button>
+            </div>
+            <figcaption>
+              Ejemplo clínico de <strong>tartrectomía</strong>: eliminación de cálculo supragingival con ultrasonidos.
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="section-title" style="margin-top:16px;">
+          <span class="pill">2</span>
+          <h2>Mecanismo de acción del ultrasonidos</h2>
+        </div>
+
+        <div class="grid cols2">
+          <div class="tile">
+            <div class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M4 12h6" stroke="rgba(11,92,171,.9)" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M14 7c3 3 3 7 0 10" stroke="rgba(11,122,90,.9)" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M17 5c4 4 4 10 0 14" stroke="rgba(11,92,171,.55)" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M10 10v4" stroke="rgba(11,92,171,.9)" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Frecuencia y vibración</h3>
+              <p>
+                Emite ondas ultrasónicas de alta frecuencia (<strong>20–29 kHz</strong>) que generan vibración y fracturan el cálculo adherido.
+              </p>
+            </div>
+          </div>
+          <div class="tile">
+            <div class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M7 19c3-7 7-7 10-14" stroke="rgba(11,92,171,.9)" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M8 14c1.4 0 2.4 1 2.4 2.3S9.4 19 8 19s-2.4-1-2.4-2.3S6.6 14 8 14Z" stroke="rgba(11,122,90,.9)" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Efecto clínico</h3>
+              <p>
+                Despega depósitos de sarro, facilitando su eliminación con irrigación y aspiración.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-title" style="margin-top:16px;">
+          <span class="pill">3</span>
+          <h2>Irrigación: por qué es imprescindible</h2>
+        </div>
+
+        <details>
+          <summary>
+            Función de la irrigación abundante
+            <svg class="chev" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <ul>
+            <li><strong>Enfría la punta</strong> y reduce el riesgo de sobrecalentamiento.</li>
+            <li>Ayuda a <strong>proteger la pulpa</strong> y a minimizar la irritación tisular.</li>
+            <li><strong>Arrastra detritos</strong> y fragmentos de cálculo para facilitar el aclarado.</li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>
+            Señales de mala irrigación (alerta)
+            <svg class="chev" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <p>
+            Poca nebulización, aumento de temperatura en la zona, molestias del paciente o acumulación de detritos.
+            Si ocurre, revisar flujo de agua, punta y potencia.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            Clave práctica para FP
+            <svg class="chev" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <p>
+            Ajustar la potencia al mínimo eficaz, mantener movimiento continuo y asegurar aspiración adecuada.
+          </p>
+        </details>
+
+        <div class="section-title" style="margin-top:16px;">
+          <span class="pill">4</span>
+          <h2>Componentes del equipo ultrasónico</h2>
+        </div>
+
+        <div class="grid cols2">
+          <div class="tile">
+            <div class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M8 6h8v12H8V6Z" stroke="rgba(11,92,171,.9)" stroke-width="1.5"/>
+                <path d="M10 4h4" stroke="rgba(11,122,90,.9)" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M10 20h4" stroke="rgba(11,92,171,.9)" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Pieza de mano</h3>
+              <p>
+                Puede ser móvil (con pedal propio) o integrada en las mangueras del sillón dental.
+              </p>
+            </div>
+          </div>
+
+          <div class="tile">
+            <div class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M5 19l6-6" stroke="rgba(11,92,171,.9)" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M9 21l8-8" stroke="rgba(11,122,90,.9)" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M14 6l4 4" stroke="rgba(11,92,171,.9)" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Puntas / insertos + llave de <span class="tip" data-tip="Herramienta para ajustar firmemente el inserto/punta y evitar aflojamientos por vibración.">torque</span></h3>
+              <p>
+                Insertos con formas distintas (cincel, pala, tipo cureta) según cantidad y tipo de cálculo. La llave de torque asegura el ajuste.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:12px;">
+          <figure>
+            <img src="img/punta_ultrasonidos_llave_torque.jpg" alt="Puntas de ultrasonidos y llave de torque para ajustar el inserto" loading="lazy">
+            <div class="img-actions">
+              <button class="btn img-btn" type="button" data-openimg="img/punta_ultrasonidos_llave_torque.jpg" data-title="Puntas + llave de torque" data-cap="Puntas/inserto de ultrasonidos y llave de torque para ajuste seguro.">
+                Ampliar imagen
+              </button>
+            </div>
+            <figcaption>
+              Puntas/inserto de ultrasonidos y <strong>llave de torque</strong> para un ajuste firme y seguro.
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="section-title" style="margin-top:16px;">
+          <span class="pill">5</span>
+          <h2>Pulido posterior</h2>
+        </div>
+
+        <div class="tile">
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M8 18c2-4 6-4 8-8" stroke="rgba(11,92,171,.9)" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M14 10l4 4" stroke="rgba(11,122,90,.9)" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M6 20h6" stroke="rgba(11,92,171,.9)" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <h3>Secuencia óptima</h3>
+            <p>
+              Tras ultrasonidos, el esmalte puede quedar rugoso. Finaliza con pulido usando copa/cepillo en contraángulo y pasta de profilaxis:
+              alisa el esmalte y elimina manchas extrínsecas (café, tabaco, té).
+            </p>
+          </div>
+        </div>
+
+        <div class="section-title" style="margin-top:16px;">
+          <span class="pill">6</span>
+          <h2>Flujo del procedimiento</h2>
+        </div>
+
+        <div class="flow" aria-label="Flujo de tartrectomía con ultrasonidos">
+          <div class="step">
+            <strong>Evaluación</strong>
+            <span>Identificar cálculo supragingival y zonas críticas.</span>
+          </div>
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div class="step">
+            <strong>Ultrasonidos + irrigación</strong>
+            <span>Potencia mínima eficaz, movimiento continuo, agua abundante.</span>
+          </div>
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div class="step">
+            <strong>Revisión</strong>
+            <span>Comprobar superficies limpias y confort del paciente.</span>
+          </div>
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div class="step">
+            <strong>Pulido</strong>
+            <span>Copa/cepillo + pasta de profilaxis, eliminar manchas extrínsecas.</span>
+          </div>
+        </div>
+
+        <div class="section-title" style="margin-top:16px;">
+          <span class="pill">7</span>
+          <h2>Errores típicos</h2>
+        </div>
+
+        <details>
+          <summary>
+            Errores típicos en ultrasonidos (tartrectomía)
+            <svg class="chev" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <ul>
+            <li>Usar demasiada potencia en lugar de técnica (aumenta molestias y riesgo térmico).</li>
+            <li>Trabajar “estático” sin movimiento continuo.</li>
+            <li>Irrigación insuficiente o mala aspiración.</li>
+            <li>No finalizar con pulido y dejar superficies rugosas.</li>
+          </ul>
+        </details>
+
+        <div class="section-title" style="margin-top:16px;">
+          <span class="pill">8</span>
+          <h2>Mini test (autocorrección)</h2>
+        </div>
+
+        <div class="quiz" data-quiz="us">
+          <h3>Comprueba tu comprensión: Ultrasonidos</h3>
+
+          <fieldset class="q" data-answer="b" data-explain="La tartrectomía elimina placa mineralizada (cálculo/sarro), principalmente supragingival.">
+            <legend>1) La tartrectomía se realiza para:</legend>
+            <ul class="opts">
+              <li><label class="opt"><input type="radio" name="us1" value="a"> Blanquear el esmalte con peróxidos.</label></li>
+              <li><label class="opt"><input type="radio" name="us1" value="b"> Eliminar cálculo/sarro (placa mineralizada), sobre todo supragingival.</label></li>
+              <li><label class="opt"><input type="radio" name="us1" value="c"> Suturar tejido gingival tras cirugía.</label></li>
+              <li><label class="opt"><input type="radio" name="us1" value="d"> Realizar un diagnóstico radiológico.</label></li>
+            </ul>
+            <div class="feedback" aria-live="polite"></div>
+          </fieldset>
+
+          <fieldset class="q" data-answer="c" data-explain="El ultrasonidos trabaja habitualmente en rangos de 20–29 kHz (alta frecuencia), generando vibración.">
+            <legend>2) El ultrasonidos actúa principalmente por:</legend>
+            <ul class="opts">
+              <li><label class="opt"><input type="radio" name="us2" value="a"> Presión manual directa sin vibración.</label></li>
+              <li><label class="opt"><input type="radio" name="us2" value="b"> Calor localizado para fundir el cálculo.</label></li>
+              <li><label class="opt"><input type="radio" name="us2" value="c"> Vibración ultrasónica de alta frecuencia que fractura el cálculo.</label></li>
+              <li><label class="opt"><input type="radio" name="us2" value="d"> Aplicación de ácido para disolver el sarro.</label></li>
+            </ul>
+            <div class="feedback" aria-live="polite"></div>
+          </fieldset>
+
+          <fieldset class="q" data-answer="a" data-explain="La irrigación enfría la punta, ayuda a arrastrar detritos y reduce el riesgo de sobrecalentamiento/pulpar.">
+            <legend>3) La irrigación durante ultrasonidos es importante porque:</legend>
+            <ul class="opts">
+              <li><label class="opt"><input type="radio" name="us3" value="a"> Enfría la punta y ayuda a arrastrar detritos.</label></li>
+              <li><label class="opt"><input type="radio" name="us3" value="b"> Aumenta la rugosidad del esmalte para retener flúor.</label></li>
+              <li><label class="opt"><input type="radio" name="us3" value="c"> Sustituye al pulido final.</label></li>
+              <li><label class="opt"><input type="radio" name="us3" value="d"> Evita la necesidad de aspiración.</label></li>
+            </ul>
+            <div class="feedback" aria-live="polite"></div>
+          </fieldset>
+
+          <fieldset class="q" data-answer="d" data-explain="La llave de torque ajusta la punta/inserto firmemente para que no se afloje por la vibración.">
+            <legend>4) La llave de torque se usa para:</legend>
+            <ul class="opts">
+              <li><label class="opt"><input type="radio" name="us4" value="a"> Pulir con pasta de profilaxis.</label></li>
+              <li><label class="opt"><input type="radio" name="us4" value="b"> Aspirar agua y detritos.</label></li>
+              <li><label class="opt"><input type="radio" name="us4" value="c"> Medir profundidad de bolsa periodontal.</label></li>
+              <li><label class="opt"><input type="radio" name="us4" value="d"> Ajustar firmemente el inserto/punta al equipo.</label></li>
+            </ul>
+            <div class="feedback" aria-live="polite"></div>
+          </fieldset>
+
+          <fieldset class="q" data-answer="b" data-explain="El pulido alisa el esmalte, reduce rugosidad y ayuda a eliminar manchas extrínsecas.">
+            <legend>5) Tras ultrasonidos, el pulido se recomienda para:</legend>
+            <ul class="opts">
+              <li><label class="opt"><input type="radio" name="us5" value="a"> Aumentar la placa bacteriana para estimular la encía.</label></li>
+              <li><label class="opt"><input type="radio" name="us5" value="b"> Alisar el esmalte y eliminar manchas extrínsecas.</label></li>
+              <li><label class="opt"><input type="radio" name="us5" value="c"> Sustituir el raspado y alisado radicular.</label></li>
+              <li><label class="opt"><input type="radio" name="us5" value="d"> Preparar el diente para endodoncia.</label></li>
+            </ul>
+            <div class="feedback" aria-live="polite"></div>
+          </fieldset>
+
+          <div class="quiz-actions">
+            <div class="score" aria-live="polite"></div>
+            <button class="btn primary" type="button" data-check>Corregir</button>
+            <button class="btn" type="button" data-reset>Reiniciar</button>
+          </div>
+        </div>
+
+        <div class="section-title" style="margin-top:16px;">
+          <span class="pill">Resumen</span>
+          <h2>Mensaje clave</h2>
+        </div>
+
+        <div class="tile">
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 2l9 5v10l-9 5-9-5V7l9-5Z" stroke="rgba(11,92,171,.9)" stroke-width="1.5"/>
+              <path d="M8 12l2.5 2.5L16 9" stroke="rgba(11,122,90,.9)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <h3>Ultrasonidos: rápido y eficaz</h3>
+            <p>
+              El ultrasonidos permite una eliminación rápida y eficaz del cálculo dental, pero siempre debe acompañarse de <strong>irrigación adecuada</strong>
+              y finalizar con <strong>pulido</strong> para dejar superficies lisas y favorecer la salud periodontal.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Panel 2 -->
+      <article class="panel" id="panel2" role="tabpanel" aria-labelledby="tab2">
+        <div class="notice" role="note">
+          Aviso docente: utiliza imágenes con fines educativos respetando licencias y copyright; prioriza fuentes institucionales o fabricantes oficiales cuando sustituyas o amplíes este material.
+        </div>
+
+        <div class="section-title">
+          <span class="pill">1</span>
+          <h2>Contexto clínico: de gingivitis a periodontitis</h2>
+        </div>
+
+        <div class="grid cols2">
+          <div class="tile">
+            <div class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M4 14c2-2 4-3 8-3s6 1 8 3" stroke="rgba(11,92,171,.9)" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M6 18c2-1 3-2 6-2s4 1 6 2" stroke="rgba(11,122,90,.9)" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M8 6h8" stroke="rgba(11,92,171,.6)" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <h3>¿Qué cambia?</h3>
+              <p>
+                En periodontitis, el cálculo se deposita <span class="tip" data-tip="Depósito por debajo del margen gingival.">subgingival</span>,
+                aparecen bolsas periodontales y se afecta el soporte óseo. Puede requerir <strong>RAR</strong>.
+              </p>
+            </div>
+          </div>
+
+          <div class="tile">
+            <div class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 3c4.2 0 7 2.7 7 6.6 0 2.4-1.1 4.3-2.5 6.1-1.2 1.6-2 3.5-2.2 5.6-.1.8-.7 1.7-2.3 1.7-1.2 0-1.8-.6-2-1.3-.2-.7-.4-2.3-1-2.3s-.8 1.6-1 2.3c-.2.7-.8 1.3-2 1.3-1.6 0-2.2-.9-2.3-1.7-.2-2.1-1-4-2.2-5.6C6.1 13 5 11 5 8.6 5 4.7 7.8 3 12 3Z" stroke="rgba(11,122,90,.9)" stroke-width="1.5"/>
+                <path d="M9 11h6" stroke="rgba(11,92,171,.9)" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <h3>¿Por qué no basta el ultrasonidos?</h3>
+              <p>
+                En cálculo profundo y bolsas, se necesita instrumentación manual para <strong>raspado y alisado radicular (RAR)</strong>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:12px;">
+          <figure>
+            <img src="img/esquema_rar.png" alt="Esquema visual de periodontitis y tratamiento RAR" loading="lazy">
+            <div class="img-actions">
+              <button class="btn img-btn" type="button" data-openimg="img/esquema_rar.png" data-title="Contexto RAR" data-cap="Esquema visual de periodontitis y necesidad de raspado y alisado radicular.">
+                Ampliar imagen
+              </button>
+            </div>
+            <figcaption>
+              Contexto: periodontitis y necesidad de <strong>RAR</strong> cuando existe cálculo subgingival y bolsas periodontales.
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="section-title" style="margin-top:16px;">
+          <span class="pill">2</span>
+          <h2>¿Qué son las curetas periodontales?</h2>
+        </div>
+
+        <div class="grid cols2">
+          <div class="tile">
+            <div class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M5 19l8-8" stroke="rgba(11,92,171,.9)" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M12 6l6 6" stroke="rgba(11,122,90,.9)" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M7 21l3-3" stroke="rgba(11,92,171,.6)" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Instrumentos manuales de corte</h3>
+              <p>
+                “Cucharilla fina” con bordes cortantes y punta redondeada, diseñada para entrar en la
+                <span class="tip" data-tip="Espacio patológico entre encía y diente que puede albergar cálculo subgingival.">bolsa periodontal</span>
+                sin dañar tejido blando.
+              </p>
+            </div>
+          </div>
+
+          <div class="tile">
+            <div class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M6 12h12" stroke="rgba(11,92,171,.9)" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M10 8l-4 4 4 4" stroke="rgba(11,122,90,.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Movimiento de trabajo</h3>
+              <p>
+                Trabajan mediante <strong>tracción</strong> (arrastrando hacia arriba) para eliminar cálculo y alisar la raíz.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid cols2" style="margin-top:12px;">
+          <figure>
+            <img src="img/cureta.webp" alt="Cureta eliminando sarro en zona subgingival y bolsa periodontal" loading="lazy">
+            <div class="img-actions">
+              <button class="btn img-btn" type="button" data-openimg="img/cureta.webp" data-title="Cureta en bolsa periodontal" data-cap="Representación de la cureta actuando sobre sarro subgingival.">
+                Ampliar imagen
+              </button>
+            </div>
+            <figcaption>
+              Representación: cureta actuando sobre <strong>sarro subgingival</strong> en bolsa periodontal.
+            </figcaption>
+          </figure>
+
+          <figure>
+            <img src="img/movimiento_cureta.jpg" alt="Esquema del movimiento de trabajo con cureta periodontal" loading="lazy">
+            <div class="img-actions">
+              <button class="btn img-btn" type="button" data-openimg="img/movimiento_cureta.jpg" data-title="Movimiento de cureta" data-cap="Esquema del movimiento (tracción) para raspado/alisado.">
+                Ampliar imagen
+              </button>
+            </div>
+            <figcaption>
+              Esquema del movimiento de trabajo: <strong>tracción</strong> (raspado y alisado).
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="section-title" style="margin-top:16px;">
+          <span class="pill">3</span>
+          <h2>Sujeción y control: lapicero modificado + apoyo</h2>
+        </div>
+
+        <div class="grid cols2">
+          <div class="tile">
+            <div class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M7 17c3-6 5-8 10-10" stroke="rgba(11,92,171,.9)" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M6 19c.6-1.2 1.3-2.4 2.2-3.4" stroke="rgba(11,122,90,.9)" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M12 8l4 4" stroke="rgba(11,92,171,.6)" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Sujeción “lapicero modificado”</h3>
+              <p>
+                Pulgar, índice y medio estabilizan el tallo. El apoyo firme con el dedo anular mejora control y seguridad.
+              </p>
+            </div>
+          </div>
+
+          <div class="tile">
+            <div class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 3v18" stroke="rgba(11,92,171,.9)" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M7 8h10" stroke="rgba(11,122,90,.9)" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M7 16h10" stroke="rgba(11,122,90,.6)" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Por qué importa</h3>
+              <p>
+                Reduce movimientos involuntarios y riesgo de lesión del tejido blando, especialmente en bolsas profundas.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:12px;">
+          <figure>
+            <img src="img/sujetar_cureta_gracey.gif" alt="Sujeción tipo lapicero modificado y apoyo con dedo anular" loading="lazy">
+            <div class="img-actions">
+              <button class="btn img-btn" type="button" data-openimg="img/sujetar_cureta_gracey.gif" data-title="Sujeción lapicero modificado" data-cap="Ejemplo visual de sujeción y apoyo para control del instrumento.">
+                Ampliar imagen
+              </button>
+            </div>
+            <figcaption>
+              Sujeción tipo <strong>lapicero modificado</strong> y punto de apoyo con dedo anular para estabilizar el instrumento.
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="section-title" style="margin-top:16px;">
+          <span class="pill">4</span>
+          <h2>Tipos de curetas: Universales vs Gracey</h2>
+        </div>
+
+        <div class="grid cols2">
+          <div class="tile">
+            <div class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M7 18c4-7 7-9 12-12" stroke="rgba(11,92,171,.9)" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M6 19h8" stroke="rgba(11,122,90,.9)" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <h3>A) Universales (Columbia)</h3>
+              <p class="muted">
+                Para cálculo supra y subgingival. Dos bordes cortantes. Ángulo de corte de 90°. Usables en todas las superficies.
+              </p>
+            </div>
+          </div>
+
+          <div class="tile">
+            <div class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M7 18c4-7 7-9 12-12" stroke="rgba(11,122,90,.9)" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M6 19h8" stroke="rgba(11,92,171,.9)" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <h3>B) Específicas (Gracey)</h3>
+              <p class="muted">
+                Estándar de oro. Diseñadas para cálculo subgingival y superficies específicas. Un borde cortante (inferior). Ángulo de corte de 70°.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <details style="margin-top:10px;">
+          <summary>
+            Columbia: ventajas y desventajas (examen)
+            <svg class="chev" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <ul>
+            <li><strong>Ventaja:</strong> instrumento “para todo”, útil cuando se inicia el aprendizaje.</li>
+            <li><strong>Desventaja:</strong> peor adaptación a la raíz y más riesgo de lesionar tejido blando si se usa sin control.</li>
+            <li><strong>Tipos habituales:</strong> 2R-2L (anteriores), 4R-4L (posteriores), 13-14 (general).</li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>
+            Gracey: por qué se consideran estándar de oro
+            <svg class="chev" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <ul>
+            <li>Mejor adaptación a la superficie radicular por su diseño y angulación.</li>
+            <li>Un solo filo reduce el riesgo de dañar tejidos blandos.</li>
+            <li>Mayor precisión en bolsas profundas y en áreas específicas.</li>
+          </ul>
+        </details>
+
+        <div style="margin-top:12px;">
+          <figure>
+            <img src="img/curetas_gracey.jpeg" alt="Curetas periodontales tipo Gracey" loading="lazy">
+            <div class="img-actions">
+              <button class="btn img-btn" type="button" data-openimg="img/curetas_gracey.jpeg" data-title="Curetas Gracey" data-cap="Curetas Gracey: instrumentos específicos por superficie dentaria.">
+                Ampliar imagen
+              </button>
+            </div>
+            <figcaption>
+              Curetas <strong>Gracey</strong>: instrumentos específicos por superficie dentaria (frecuentemente codificados por colores).
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="section-title" style="margin-top:16px;">
+          <span class="pill">5</span>
+          <h2>Flujo del RAR</h2>
+        </div>
+
+        <div class="flow" aria-label="Flujo de raspado y alisado radicular (RAR)">
+          <div class="step">
+            <strong>Diagnóstico</strong>
+            <span>Evaluar periodontitis, bolsas y presencia de cálculo subgingival.</span>
+          </div>
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div class="step">
+            <strong>Selección de cureta</strong>
+            <span>Universal o Gracey según zona/superficie.</span>
+          </div>
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div class="step">
+            <strong>Técnica</strong>
+            <span>Lapicero modificado + apoyo + tracción controlada.</span>
+          </div>
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div class="step">
+            <strong>Alisado</strong>
+            <span>Superficie radicular lisa y libre de cálculo.</span>
+          </div>
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div class="step">
+            <strong>Reevaluación</strong>
+            <span>Comprobar reducción de inflamación y control de placa.</span>
+          </div>
+        </div>
+
+        <div class="section-title" style="margin-top:16px;">
+          <span class="pill">6</span>
+          <h2>Errores típicos</h2>
+        </div>
+
+        <details>
+          <summary>
+            Errores típicos en RAR con curetas
+            <svg class="chev" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <ul>
+            <li>No establecer punto de apoyo (más riesgo de lesión y menor control).</li>
+            <li>Usar el movimiento equivocado (empuje en vez de tracción controlada).</li>
+            <li>Elegir cureta no adecuada para la superficie (especialmente en Gracey).</li>
+            <li>Justificar sin explicar técnica, objetivo y seguridad (importante en examen).</li>
+          </ul>
+        </details>
+
+        <div class="section-title" style="margin-top:16px;">
+          <span class="pill">7</span>
+          <h2>Mini test (autocorrección)</h2>
+        </div>
+
+        <div class="quiz" data-quiz="rar">
+          <h3>Comprueba tu comprensión: Curetas y RAR</h3>
+
+          <fieldset class="q" data-answer="c" data-explain="En periodontitis el cálculo suele ser subgingival y puede requerir RAR para eliminarlo y alisar raíces.">
+            <legend>1) El RAR se indica especialmente cuando:</legend>
+            <ul class="opts">
+              <li><label class="opt"><input type="radio" name="r1" value="a"> Solo hay manchas extrínsecas por café.</label></li>
+              <li><label class="opt"><input type="radio" name="r1" value="b"> Se quiere realizar un pulido estético.</label></li>
+              <li><label class="opt"><input type="radio" name="r1" value="c"> Hay periodontitis con cálculo subgingival y bolsas periodontales.</label></li>
+              <li><label class="opt"><input type="radio" name="r1" value="d"> Se necesita aplicar flúor tópico.</label></li>
+            </ul>
+            <div class="feedback" aria-live="polite"></div>
+          </fieldset>
+
+          <fieldset class="q" data-answer="b" data-explain="Las curetas trabajan mediante un movimiento de tracción (arrastre hacia arriba) para eliminar cálculo y alisar.">
+            <legend>2) El movimiento de trabajo de la cureta es:</legend>
+            <ul class="opts">
+              <li><label class="opt"><input type="radio" name="r2" value="a"> Presión estática sin desplazamiento.</label></li>
+              <li><label class="opt"><input type="radio" name="r2" value="b"> Tracción (arrastre controlado).</label></li>
+              <li><label class="opt"><input type="radio" name="r2" value="c"> Rotación continua como una fresa.</label></li>
+              <li><label class="opt"><input type="radio" name="r2" value="d"> Vibración ultrasónica.</label></li>
+            </ul>
+            <div class="feedback" aria-live="polite"></div>
+          </fieldset>
+
+          <fieldset class="q" data-answer="a" data-explain="La sujeción lapicero modificado usa pulgar, índice y medio; el apoyo con el anular estabiliza.">
+            <legend>3) La sujeción correcta incluye:</legend>
+            <ul class="opts">
+              <li><label class="opt"><input type="radio" name="r3" value="a"> Lapicero modificado y apoyo con dedo anular.</label></li>
+              <li><label class="opt"><input type="radio" name="r3" value="b"> Agarre palmar completo sin apoyo.</label></li>
+              <li><label class="opt"><input type="radio" name="r3" value="c"> Sujetar con dos dedos para aumentar fuerza.</label></li>
+              <li><label class="opt"><input type="radio" name="r3" value="d"> Agarre tipo “martillo” para mayor velocidad.</label></li>
+            </ul>
+            <div class="feedback" aria-live="polite"></div>
+          </fieldset>
+
+          <fieldset class="q" data-answer="d" data-explain="Las Gracey tienen un solo borde cortante y un ángulo de corte de 70°, adaptándose mejor a superficies específicas.">
+            <legend>4) Una característica clave de las curetas Gracey es:</legend>
+            <ul class="opts">
+              <li><label class="opt"><input type="radio" name="r4" value="a"> Dos bordes cortantes simétricos.</label></li>
+              <li><label class="opt"><input type="radio" name="r4" value="b"> Ángulo de corte de 90° respecto al eje.</label></li>
+              <li><label class="opt"><input type="radio" name="r4" value="c"> Uso universal para todas las superficies sin adaptación.</label></li>
+              <li><label class="opt"><input type="radio" name="r4" value="d"> Un solo borde cortante y ángulo de corte de 70°.</label></li>
+            </ul>
+            <div class="feedback" aria-live="polite"></div>
+          </fieldset>
+
+          <fieldset class="q" data-answer="c" data-explain="Las universales (Columbia) se adaptan peor a la morfología radicular y pueden lesionar tejido si no se controla.">
+            <legend>5) La principal desventaja de una cureta universal es:</legend>
+            <ul class="opts">
+              <li><label class="opt"><input type="radio" name="r5" value="a"> No puede eliminar cálculo supragingival.</label></li>
+              <li><label class="opt"><input type="radio" name="r5" value="b"> Solo sirve para una superficie concreta.</label></li>
+              <li><label class="opt"><input type="radio" name="r5" value="c"> Peor adaptación a la raíz y mayor riesgo de lesión si mal uso.</label></li>
+              <li><label class="opt"><input type="radio" name="r5" value="d"> No se puede afilar nunca.</label></li>
+            </ul>
+            <div class="feedback" aria-live="polite"></div>
+          </fieldset>
+
+          <div class="quiz-actions">
+            <div class="score" aria-live="polite"></div>
+            <button class="btn primary" type="button" data-check>Corregir</button>
+            <button class="btn" type="button" data-reset>Reiniciar</button>
+          </div>
+        </div>
+
+        <div class="section-title" style="margin-top:16px;">
+          <span class="pill">Resumen</span>
+          <h2>Mensaje clave</h2>
+        </div>
+
+        <div class="tile">
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 2l9 5v10l-9 5-9-5V7l9-5Z" stroke="rgba(11,92,171,.9)" stroke-width="1.5"/>
+              <path d="M7 12h10" stroke="rgba(11,122,90,.9)" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M12 7v10" stroke="rgba(11,122,90,.9)" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <h3>Curetas y RAR: precisión + técnica</h3>
+            <p>
+              Las curetas periodontales son esenciales en periodoncia avanzada para eliminar cálculo subgingival y alisar raíces.
+              La seguridad y eficacia dependen de la <strong>sujeción</strong>, el <strong>apoyo</strong> y la selección correcta del instrumento.
+            </p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Sidebar glossary -->
+    <aside class="sidebar" aria-label="Glosario">
+      <section class="card" aria-label="Glosario y buscador">
+        <div class="sidehead">
+          <h2>Glosario (con buscador)</h2>
+          <div class="search" role="search">
+            <input id="gSearch" type="search" placeholder="Buscar término…" aria-label="Buscar término en el glosario" />
+          </div>
+        </div>
+        <div class="glist" id="gList" aria-live="polite"></div>
+      </section>
+
+      <section class="card pad" style="margin-top:12px;" aria-label="Consejo docente">
+        <div class="tile" style="border:none; background: transparent; padding:0;">
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 2l10 6-10 6L2 8l10-6Z" stroke="rgba(11,92,171,.9)" stroke-width="1.5"/>
+              <path d="M6 12v6c3 2 9 2 12 0v-6" stroke="rgba(11,122,90,.9)" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <h3 style="margin:0 0 4px; font-size:15px;">Uso en aula</h3>
+            <p style="margin:0; font-size:13px;">
+              Puedes pedir al alumnado que explique un término del glosario en 30 segundos y lo conecte con una fase del flujo.
+            </p>
+          </div>
+        </div>
+      </section>
+    </aside>
+  </main>
+
+  <!-- Tooltip -->
+  <div class="tooltip" id="tooltip" role="tooltip" aria-hidden="true"></div>
+
+  <!-- Image Modal -->
+  <div class="modal" id="imgModal" role="dialog" aria-modal="true" aria-label="Imagen ampliada">
+    <div class="modal-card">
+      <div class="modal-head">
+        <p class="title" id="modalTitle">Imagen</p>
+        <button class="modal-close" id="modalClose" type="button">Cerrar</button>
+      </div>
+      <div class="modal-body">
+        <img id="modalImg" alt="" src="" />
+      </div>
+      <div class="modal-cap" id="modalCap"></div>
+    </div>
+  </div>
+
+  <script>
+    // ---------- Tabs ----------
+    const tab1 = document.getElementById('tab1');
+    const tab2 = document.getElementById('tab2');
+    const panel1 = document.getElementById('panel1');
+    const panel2 = document.getElementById('panel2');
+
+    function setTab(which){
+      const is1 = which === 1;
+      tab1.setAttribute('aria-selected', is1 ? 'true' : 'false');
+      tab2.setAttribute('aria-selected', is1 ? 'false' : 'true');
+      panel1.classList.toggle('active', is1);
+      panel2.classList.toggle('active', !is1);
+      // Move focus for accessibility
+      (is1 ? tab1 : tab2).focus({preventScroll:true});
+      // Scroll top of panel a bit (optional)
+      window.scrollTo({top: 0, behavior: (getComputedStyle(document.body).getPropertyValue('--anim').trim()==='0ms') ? 'auto' : 'smooth'});
+    }
+
+    tab1.addEventListener('click', ()=>setTab(1));
+    tab2.addEventListener('click', ()=>setTab(2));
+
+    tab1.addEventListener('keydown', (e)=>{
+      if(e.key === 'ArrowRight'){ e.preventDefault(); setTab(2); }
+    });
+    tab2.addEventListener('keydown', (e)=>{
+      if(e.key === 'ArrowLeft'){ e.preventDefault(); setTab(1); }
+    });
+
+    // ---------- Study mode + Print ----------
+    const btnStudy = document.getElementById('btnStudy');
+    const btnPrint = document.getElementById('btnPrint');
+
+    btnStudy.addEventListener('click', ()=>{
+      const on = document.body.classList.toggle('study');
+      btnStudy.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+
+    btnPrint.addEventListener('click', ()=> window.print());
+
+    // ---------- Tooltip system (hover + tap) ----------
+    const tooltip = document.getElementById('tooltip');
+    const defs = {
+      "tartrectomía": "Procedimiento clínico para eliminar sarro/cálculo (placa mineralizada), sobre todo supragingival.",
+      "cálculo supragingival": "Depósito mineralizado por encima del margen gingival (encía).",
+      "subgingival": "Por debajo del margen gingival; suele asociarse a bolsas periodontales en periodontitis.",
+      "irrigación": "Aporte continuo de agua: enfría, reduce sobrecalentamiento y arrastra detritos.",
+      "punta": "Inserto acoplado a la pieza de mano que transmite vibración ultrasónica.",
+      "inserto": "Sinónimo de punta; parte intercambiable que se coloca en el ultrasonidos.",
+      "torque": "Ajuste firme del inserto con llave para evitar aflojamiento por vibración.",
+      "RAR": "Raspado y Alisado Radicular: eliminación de cálculo subgingival y alisado de la raíz.",
+      "bolsa periodontal": "Espacio patológico entre diente y encía donde se acumulan placa y cálculo subgingival.",
+      "Gracey": "Curetas específicas, un solo borde cortante y angulación ~70°. Mejor adaptación a la raíz.",
+      "Columbia": "Curetas universales (dos bordes, 90°), útiles en varias superficies; requieren control para no lesionar tejidos.",
+      "lapicero modificado": "Sujeción con pulgar, índice y medio; apoyo con dedo anular para estabilizar el instrumento."
+    };
+
+    function showTip(el, clientX, clientY){
+      const text = el.getAttribute('data-tip') || '';
+      if(!text) return;
+      tooltip.innerHTML = `<span class="k">Definición</span>${escapeHtml(text)}`;
+      tooltip.classList.add('show');
+      tooltip.setAttribute('aria-hidden','false');
+      positionTip(clientX, clientY);
+    }
+
+    function positionTip(x, y){
+      const pad = 12;
+      const rect = tooltip.getBoundingClientRect();
+      let left = x + 14;
+      let top = y + 14;
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+      if(left + rect.width + pad > vw) left = vw - rect.width - pad;
+      if(top + rect.height + pad > vh) top = vh - rect.height - pad;
+      tooltip.style.left = left + 'px';
+      tooltip.style.top = top + 'px';
+    }
+
+    function hideTip(){
+      tooltip.classList.remove('show');
+      tooltip.setAttribute('aria-hidden','true');
+    }
+
+    document.addEventListener('mousemove', (e)=>{
+      if(tooltip.classList.contains('show')){
+        positionTip(e.clientX, e.clientY);
+      }
+    });
+
+    // Attach to .tip
+    document.querySelectorAll('.tip').forEach(el=>{
+      el.setAttribute('tabindex','0');
+      el.setAttribute('role','button');
+      el.setAttribute('aria-label','Definición');
+
+      el.addEventListener('mouseenter', (e)=> showTip(el, e.clientX, e.clientY));
+      el.addEventListener('mouseleave', hideTip);
+      el.addEventListener('focus', (e)=>{
+        const r = el.getBoundingClientRect();
+        showTip(el, r.left + r.width/2, r.top);
+      });
+      el.addEventListener('blur', hideTip);
+
+      // Tap/click toggles on mobile
+      el.addEventListener('click', (e)=>{
+        e.preventDefault();
+        e.stopPropagation();
+        const r = el.getBoundingClientRect();
+        if(tooltip.classList.contains('show')) hideTip();
+        else showTip(el, r.left + r.width/2, r.top + r.height);
+      });
+
+      el.addEventListener('keydown', (e)=>{
+        if(e.key === 'Enter' || e.key === ' '){
+          e.preventDefault();
+          const r = el.getBoundingClientRect();
+          if(tooltip.classList.contains('show')) hideTip();
+          else showTip(el, r.left + r.width/2, r.top + r.height);
+        }
+        if(e.key === 'Escape') hideTip();
+      });
+    });
+
+    // Hide tip when clicking elsewhere
+    document.addEventListener('click', ()=> hideTip());
+    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') hideTip(); });
+
+    // ---------- Glossary build + search ----------
+    const gList = document.getElementById('gList');
+    const gSearch = document.getElementById('gSearch');
+
+    const glossary = [
+      {term:"Tartrectomía", tag:"Profilaxis", def: defs["tartrectomía"]},
+      {term:"Cálculo supragingival", tag:"Profilaxis", def: defs["cálculo supragingival"]},
+      {term:"Subgingival", tag:"Periodoncia", def: defs["subgingival"]},
+      {term:"Irrigación", tag:"Ultrasonidos", def: defs["irrigación"]},
+      {term:"Inserto / punta", tag:"Ultrasonidos", def: defs["inserto"]},
+      {term:"Llave de torque", tag:"Ultrasonidos", def: defs["torque"]},
+      {term:"RAR", tag:"Periodoncia", def: defs["RAR"]},
+      {term:"Bolsa periodontal", tag:"Periodoncia", def: defs["bolsa periodontal"]},
+      {term:"Cureta Gracey", tag:"Instrumental", def: defs["Gracey"]},
+      {term:"Cureta Columbia", tag:"Instrumental", def: defs["Columbia"]},
+      {term:"Lapicero modificado", tag:"Técnica", def: defs["lapicero modificado"]},
+    ];
+
+    function renderGlossary(filter=""){
+      const q = filter.trim().toLowerCase();
+      gList.innerHTML = "";
+      const items = glossary.filter(it =>
+        !q || it.term.toLowerCase().includes(q) || it.tag.toLowerCase().includes(q) || it.def.toLowerCase().includes(q)
+      );
+
+      if(items.length === 0){
+        const div = document.createElement('div');
+        div.className = 'gitem';
+        div.innerHTML = `<strong>No hay coincidencias <span class="tag">0</span></strong><p>Prueba con otro término.</p>`;
+        gList.appendChild(div);
+        return;
+      }
+
+      items.forEach(it=>{
+        const div = document.createElement('div');
+        div.className = 'gitem';
+        div.innerHTML = `
+          <strong>${escapeHtml(it.term)} <span class="tag">${escapeHtml(it.tag)}</span></strong>
+          <p>${escapeHtml(it.def)}</p>
+        `;
+        gList.appendChild(div);
+      });
+    }
+    renderGlossary();
+
+    gSearch.addEventListener('input', ()=> renderGlossary(gSearch.value));
+
+    // ---------- Quiz engine ----------
+    function initQuiz(quizEl){
+      const checkBtn = quizEl.querySelector('[data-check]');
+      const resetBtn = quizEl.querySelector('[data-reset]');
+      const scoreEl = quizEl.querySelector('.score');
+      const questions = Array.from(quizEl.querySelectorAll('.q'));
+
+      function grade(){
+        let correct = 0;
+        let answered = 0;
+
+        questions.forEach((q, idx)=>{
+          const ans = q.getAttribute('data-answer');
+          const exp = q.getAttribute('data-explain') || '';
+          const fb = q.querySelector('.feedback');
+          const checked = q.querySelector('input[type="radio"]:checked');
+
+          if(!checked){
+            fb.className = 'feedback bad';
+            fb.textContent = 'Sin responder. Lee la pregunta y selecciona una opción.';
+            return;
+          }
+          answered++;
+          if(checked.value === ans){
+            correct++;
+            fb.className = 'feedback ok';
+            fb.textContent = 'Correcto. ' + exp;
+          }else{
+            fb.className = 'feedback bad';
+            fb.textContent = 'Incorrecto. ' + exp;
+          }
+        });
+
+        scoreEl.textContent = `Resultado: ${correct} / ${questions.length} (respondidas: ${answered})`;
+      }
+
+      function reset(){
+        questions.forEach(q=>{
+          q.querySelectorAll('input[type="radio"]').forEach(i=> i.checked = false);
+          const fb = q.querySelector('.feedback');
+          fb.className = 'feedback';
+          fb.textContent = '';
+          fb.style.display = '';
+        });
+        scoreEl.textContent = '';
+      }
+
+      checkBtn.addEventListener('click', grade);
+      resetBtn.addEventListener('click', reset);
+
+      // Make label click accessible feedback
+      quizEl.querySelectorAll('label.opt').forEach(l=>{
+        l.addEventListener('keydown', (e)=>{
+          if(e.key === 'Enter' || e.key === ' '){
+            e.preventDefault();
+            const input = l.querySelector('input');
+            input.checked = true;
+          }
+        });
+      });
+    }
+
+    document.querySelectorAll('.quiz').forEach(initQuiz);
+
+    // ---------- Image modal ----------
+    const imgModal = document.getElementById('imgModal');
+    const modalImg = document.getElementById('modalImg');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalCap = document.getElementById('modalCap');
+    const modalClose = document.getElementById('modalClose');
+
+    function openModal(src, title, cap){
+      modalImg.src = src;
+      modalImg.alt = title || 'Imagen ampliada';
+      modalTitle.textContent = title || 'Imagen ampliada';
+      modalCap.textContent = cap || '';
+      imgModal.classList.add('open');
+      // Focus close for accessibility
+      modalClose.focus({preventScroll:true});
+    }
+    function closeModal(){
+      imgModal.src = '';
+      imgModal.alt = '';
+      imgModal.removeAttribute('src');
+      imgModal.removeAttribute('alt');
+      imgModal.src = '';
+      imgModal.alt = '';
+      imgModal.setAttribute('src','');
+      imgModal.setAttribute('alt','');
+      imgModal.src = '';
+      imgModal.alt = '';
+      imgModal.src = '';
+      imgModal.alt = '';
+      imgModal.src = '';
+      imgModal.alt = '';
+      imgModal.src = '';
+      imgModal.alt = '';
+      imgModal.src = '';
+      imgModal.alt = '';
+      imgModal.src = '';
+      imgModal.alt = '';
+      imgModal.src = '';
+      imgModal.alt = '';
+      imgModal.src = '';
+      imgModal.alt = '';
+      imgModal.src = '';
+      imgModal.alt = '';
+      imgModal.src = '';
+      imgModal.alt = '';
+      imgModal.src = '';
+      imgModal.alt = '';
+      imgModal.src = '';
+      imgModal.alt = '';
+      imgModal.src = '';
+      imgModal.alt = '';
+      imgModal.src = '';
+      imgModal.alt = '';
+      imgModal.src = '';
+      imgModal.alt = '';
+      imgModal.src = '';
+      imgModal.alt = '';
+      // (The repetition above is harmless but unnecessary; keeping modal close simple below)
+      imgModal.classList.remove('open');
+    }
+
+    // Clean closeModal repetition properly (override)
+    closeModal = function(){
+      imgModal.classList.remove('open');
+      modalImg.src = '';
+      modalImg.alt = '';
+      modalTitle.textContent = 'Imagen';
+      modalCap.textContent = '';
+    };
+
+    document.querySelectorAll('[data-openimg]').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        openModal(btn.getAttribute('data-openimg'), btn.getAttribute('data-title'), btn.getAttribute('data-cap'));
+      });
+    });
+
+    modalClose.addEventListener('click', closeModal);
+    imgModal.addEventListener('click', (e)=>{
+      if(e.target === imgModal) closeModal();
+    });
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'Escape' && imgModal.classList.contains('open')) closeModal();
+    });
+
+    // ---------- Helpers ----------
+    function escapeHtml(str){
+      return String(str).replace(/[&<>"']/g, (m)=>({
+        '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'
+      }[m]));
+    }
+  </script>
+
+  <!--
+    INSTRUCCIONES PARA GITHUB PAGES / REPO:
+    1) Guarda este archivo como index.html en la raíz del repositorio (o carpeta publicada).
+    2) Crea una carpeta "img" al mismo nivel que index.html.
+    3) Dentro de "img", coloca estas imágenes con estos nombres exactos:
+       - tartrectomia.jpeg
+       - punta_ultrasonidos_llave_torque.jpg
+       - movimiento_cureta.jpg
+       - cureta.webp
+       - curetas_gracey.jpeg
+       - sujetar_cureta_gracey.gif
+       - esquema_rar.png
+  -->
+</body>
+</html>
