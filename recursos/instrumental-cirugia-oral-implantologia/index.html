@@ -1,151 +1,188 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Manual Visual Quirúrgico</title>
-
-<script src="https://cdn.tailwindcss.com"></script>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manual Visual Quirúrgico</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-slate-50 p-6 font-sans">
+<body class="bg-slate-50 p-6 font-sans text-slate-800">
+  <div class="max-w-7xl mx-auto">
 
-<div class="max-w-7xl mx-auto">
+    <header class="mb-8">
+      <h1 class="text-3xl md:text-4xl font-bold mb-2">Manual Visual Quirúrgico</h1>
+      <p class="text-slate-600">Atlas de instrumental de cirugía oral e implantología</p>
+    </header>
 
-  <!-- TÍTULO -->
-  <h1 class="text-3xl font-bold mb-6 text-slate-800">
-    Manual Visual Quirúrgico
-  </h1>
+    <nav class="flex gap-4 mb-8 flex-wrap">
+      <button onclick="mostrar('cirugia')"
+        class="bg-blue-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-blue-700 transition">
+        Cirugía Oral
+      </button>
 
-  <!-- BOTONES -->
-  <div class="flex gap-4 mb-8">
-    <button onclick="mostrar('cirugia')" class="bg-blue-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-blue-700">
-      Cirugía Oral
-    </button>
+      <button onclick="mostrar('implantologia')"
+        class="bg-slate-200 text-slate-800 px-5 py-2 rounded-lg font-semibold hover:bg-slate-300 transition">
+        Implantología
+      </button>
+    </nav>
 
-    <button onclick="mostrar('implantes')" class="bg-slate-200 px-5 py-2 rounded-lg font-semibold hover:bg-slate-300">
-      Implantología
-    </button>
+    <main id="contenido" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></main>
+
   </div>
 
-  <!-- CONTENIDO -->
-  <div id="contenido" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
+  <script>
+    const datos = {
+      cirugia: [
+        {
+          nombre: "Jeringa de anestesia",
+          funcion: "Administrar anestesia local para insensibilizar la zona quirúrgica.",
+          momento: "Inicio del procedimiento",
+          img: "/TAO/img/jeringa de anestesia.jpg"
+        },
+        {
+          nombre: "Separador Minnesota",
+          funcion: "Separar mejilla, labio o colgajo para mejorar la visibilidad del campo operatorio.",
+          momento: "Durante toda la intervención",
+          img: "/TAO/img/separador de minesota.jpg"
+        },
+        {
+          nombre: "Espejo intraoral",
+          funcion: "Permitir visión indirecta y ayudar en la separación de tejidos blandos.",
+          momento: "Exploración y cirugía",
+          img: "/TAO/img/espejo.jpg"
+        },
+        {
+          nombre: "Bisturí",
+          funcion: "Realizar incisiones precisas en tejidos blandos.",
+          momento: "Inicio de la cirugía",
+          img: "/TAO/img/hoja de bisturí.jpg"
+        },
+        {
+          nombre: "Periostótomo",
+          funcion: "Despegar el periostio y separar la mucosa del hueso.",
+          momento: "Tras la incisión",
+          img: "/TAO/img/periostotomo.jpg"
+        },
+        {
+          nombre: "Pinzas de Adson",
+          funcion: "Sujetar y estabilizar tejidos durante la cirugía.",
+          momento: "Durante toda la cirugía",
+          img: "/TAO/img/pinzas de adson.jpg"
+        },
+        {
+          nombre: "Pinza mosquito",
+          funcion: "Realizar hemostasia o sujetar pequeños elementos.",
+          momento: "Control del sangrado / intervención",
+          img: "/TAO/img/pinza mosquito hemostática.jpg"
+        },
+        {
+          nombre: "Fórceps",
+          funcion: "Realizar la extracción final del diente.",
+          momento: "Fase de exodoncia",
+          img: "/TAO/img/forceps.jpg"
+        },
+        {
+          nombre: "Botador",
+          funcion: "Luxar o aflojar el diente antes de usar el fórceps.",
+          momento: "Antes de la exodoncia",
+          img: "/TAO/img/botador.jpg"
+        },
+        {
+          nombre: "Cucharilla de legrado",
+          funcion: "Eliminar restos de tejido, infección o quistes del alvéolo.",
+          momento: "Tras la extracción",
+          img: "/TAO/img/cucharilla de legrado.jpg"
+        },
+        {
+          nombre: "Fresa para pieza de mano",
+          funcion: "Cortar hueso o dividir piezas dentales en osteotomía u odontosección.",
+          momento: "Osteotomía / odontosección",
+          img: "/TAO/img/fresa para pieza de mano.jpg"
+        },
+        {
+          nombre: "Portaagujas de sutura",
+          funcion: "Sujetar la aguja durante el cierre quirúrgico.",
+          momento: "Fase de sutura",
+          img: "/TAO/img/portaagujas de sutura.avif"
+        },
+        {
+          nombre: "Aguja de sutura",
+          funcion: "Cerrar los bordes de la herida quirúrgica.",
+          momento: "Finalización de la cirugía",
+          img: "/TAO/img/aguja de sutura.jpg"
+        },
+        {
+          nombre: "Gasas",
+          funcion: "Controlar el sangrado, limpiar y secar el campo operatorio.",
+          momento: "Todo el procedimiento",
+          img: "/TAO/img/gasas.jpg"
+        }
+      ],
 
-</div>
+      implantologia: [
+        {
+          nombre: "Motor de implantes",
+          funcion: "Controlar la velocidad y el torque durante el fresado óseo y la inserción del implante.",
+          momento: "Fase de fresado óseo",
+          img: "/TAO/img/motor de implantes.jpg"
+        },
+        {
+          nombre: "Contraángulo para implantología",
+          funcion: "Transmitir el movimiento del motor con reducción y precisión durante la preparación del lecho.",
+          momento: "Preparación del lecho implantario",
+          img: "/TAO/img/contraangulo para implantologia.avif"
+        },
+        {
+          nombre: "Caja de implantes",
+          funcion: "Contener las fresas y el instrumental específico para la secuencia quirúrgica del implante.",
+          momento: "Secuencia de fresado",
+          img: "/TAO/img/caja implantes.jpg"
+        },
+        {
+          nombre: "Llave de torque para implantes",
+          funcion: "Ajustar el implante o los pilares con la fuerza exacta.",
+          momento: "Inserción final",
+          img: "/TAO/img/llave de torque para implantes.jpg"
+        }
+      ]
+    };
 
-<script>
-
-const datos = {
-
-  cirugia: [
-    {
-      nombre:"Jeringa de anestesia",
-      funcion:"Administrar anestesia local para insensibilizar la zona",
-      momento:"Inicio del procedimiento",
-      img:"/TAO/img/jeringa-anestesia.jpg"
-    },
-    {
-      nombre:"Bisturí",
-      funcion:"Realizar incisiones precisas en la encía",
-      momento:"Inicio de la cirugía",
-      img:"/TAO/img/bisturi.jpg"
-    },
-    {
-      nombre:"Fórceps",
-      funcion:"Extraer el diente mediante presión controlada",
-      momento:"Fase de exodoncia",
-      img:"/TAO/img/forceps.jpg"
-    },
-    {
-      nombre:"Botador",
-      funcion:"Luxar o aflojar el diente antes de la extracción",
-      momento:"Antes de la exodoncia",
-      img:"/TAO/img/botador.jpg"
-    },
-    {
-      nombre:"Cureta",
-      funcion:"Eliminar restos de tejido o infección del alvéolo",
-      momento:"Tras la extracción",
-      img:"/TAO/img/cureta.jpg"
-    }
-  ],
-
-  implantes: [
-    {
-      nombre:"Motor de implantes",
-      funcion:"Controlar velocidad y torque durante el fresado óseo",
-      momento:"Fase de fresado",
-      img:"/TAO/img/motor-implantes.jpg"
-    },
-    {
-      nombre:"Contraángulo",
-      funcion:"Permitir el fresado preciso del hueso",
-      momento:"Preparación del lecho",
-      img:"/TAO/img/contraangulo.jpg"
-    },
-    {
-      nombre:"Caja de fresas",
-      funcion:"Crear el lecho del implante de forma progresiva",
-      momento:"Secuencia de fresado",
-      img:"/TAO/img/fresas-implantes.jpg"
-    },
-    {
-      nombre:"Llave de torque",
-      funcion:"Ajustar el implante con la fuerza adecuada",
-      momento:"Inserción final",
-      img:"/TAO/img/llave-torque.jpg"
-    }
-  ]
-
-};
-
-function mostrar(tipo){
-
-  const cont = document.getElementById("contenido");
-  cont.innerHTML = "";
-
-  datos[tipo].forEach(item => {
-
-    cont.innerHTML += `
-      <div class="bg-white rounded-xl shadow hover:shadow-xl transition overflow-hidden">
-
-        <div class="h-48 flex items-center justify-center bg-white p-4">
-          <img 
-            src="${item.img}" 
-            alt="${item.nombre}" 
-            class="max-h-full object-contain"
-            onerror="this.src='https://via.placeholder.com/300x200?text=Imagen+no+disponible'"
-          >
-        </div>
-
-        <div class="p-4">
-
-          <h2 class="font-bold text-lg text-slate-800 mb-2">
-            ${item.nombre}
-          </h2>
-
-          <p class="text-sm text-slate-600 mb-3">
-            ${item.funcion}
-          </p>
-
-          <div class="text-xs bg-slate-100 p-2 rounded text-slate-700">
-            <strong>Momento:</strong> ${item.momento}
+    function crearTarjeta(item) {
+      return `
+        <article class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition duration-300">
+          <div class="h-52 bg-white flex items-center justify-center p-4 border-b border-slate-100">
+            <img
+              src="${item.img}"
+              alt="${item.nombre}"
+              class="max-h-full max-w-full object-contain"
+              onerror="this.onerror=null; this.src='https://via.placeholder.com/500x300?text=Imagen+no+disponible';"
+            />
           </div>
 
-        </div>
+          <div class="p-5">
+            <h2 class="text-xl font-bold mb-3">${item.nombre}</h2>
 
-      </div>
-    `;
+            <div class="mb-4">
+              <p class="text-xs uppercase tracking-wide font-bold text-blue-600 mb-1">¿Para qué sirve?</p>
+              <p class="text-sm text-slate-700 leading-relaxed">${item.funcion}</p>
+            </div>
 
-  });
+            <div class="bg-slate-50 border border-slate-100 rounded-xl p-3">
+              <p class="text-xs uppercase tracking-wide font-bold text-slate-500 mb-1">¿En qué momento se usa?</p>
+              <p class="text-sm font-medium text-slate-700">${item.momento}</p>
+            </div>
+          </div>
+        </article>
+      `;
+    }
 
-}
+    function mostrar(tipo) {
+      const contenedor = document.getElementById("contenido");
+      contenedor.innerHTML = datos[tipo].map(crearTarjeta).join("");
+    }
 
-// CARGA INICIAL
-mostrar('cirugia');
-
-</script>
-
+    mostrar("cirugia");
+  </script>
 </body>
 </html>
