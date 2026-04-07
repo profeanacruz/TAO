@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual Visual Quirúrgico</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="bg-slate-50 p-6 font-sans">
+
+<div class="max-w-7xl mx-auto">
+
+  <!-- TÍTULO -->
+  <h1 class="text-3xl font-bold mb-6 text-slate-800">
+    Manual Visual Quirúrgico
+  </h1>
+
+  <!-- BOTONES -->
+  <div class="flex gap-4 mb-8">
+    <button onclick="mostrar('cirugia')" class="bg-blue-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-blue-700">
+      Cirugía Oral
+    </button>
+
+    <button onclick="mostrar('implantes')" class="bg-slate-200 px-5 py-2 rounded-lg font-semibold hover:bg-slate-300">
+      Implantología
+    </button>
+  </div>
+
+  <!-- CONTENIDO -->
+  <div id="contenido" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
+
+</div>
+
+<script>
+
+const datos = {
+
+  cirugia: [
+    {
+      nombre:"Jeringa de anestesia",
+      funcion:"Administrar anestesia local para insensibilizar la zona",
+      momento:"Inicio del procedimiento",
+      img:"/TAO/img/jeringa-anestesia.jpg"
+    },
+    {
+      nombre:"Bisturí",
+      funcion:"Realizar incisiones precisas en la encía",
+      momento:"Inicio de la cirugía",
+      img:"/TAO/img/bisturi.jpg"
+    },
+    {
+      nombre:"Fórceps",
+      funcion:"Extraer el diente mediante presión controlada",
+      momento:"Fase de exodoncia",
+      img:"/TAO/img/forceps.jpg"
+    },
+    {
+      nombre:"Botador",
+      funcion:"Luxar o aflojar el diente antes de la extracción",
+      momento:"Antes de la exodoncia",
+      img:"/TAO/img/botador.jpg"
+    },
+    {
+      nombre:"Cureta",
+      funcion:"Eliminar restos de tejido o infección del alvéolo",
+      momento:"Tras la extracción",
+      img:"/TAO/img/cureta.jpg"
+    }
+  ],
+
+  implantes: [
+    {
+      nombre:"Motor de implantes",
+      funcion:"Controlar velocidad y torque durante el fresado óseo",
+      momento:"Fase de fresado",
+      img:"/TAO/img/motor-implantes.jpg"
+    },
+    {
+      nombre:"Contraángulo",
+      funcion:"Permitir el fresado preciso del hueso",
+      momento:"Preparación del lecho",
+      img:"/TAO/img/contraangulo.jpg"
+    },
+    {
+      nombre:"Caja de fresas",
+      funcion:"Crear el lecho del implante de forma progresiva",
+      momento:"Secuencia de fresado",
+      img:"/TAO/img/fresas-implantes.jpg"
+    },
+    {
+      nombre:"Llave de torque",
+      funcion:"Ajustar el implante con la fuerza adecuada",
+      momento:"Inserción final",
+      img:"/TAO/img/llave-torque.jpg"
+    }
+  ]
+
+};
+
+function mostrar(tipo){
+
+  const cont = document.getElementById("contenido");
+  cont.innerHTML = "";
+
+  datos[tipo].forEach(item => {
+
+    cont.innerHTML += `
+      <div class="bg-white rounded-xl shadow hover:shadow-xl transition overflow-hidden">
+
+        <div class="h-48 flex items-center justify-center bg-white p-4">
+          <img 
+            src="${item.img}" 
+            alt="${item.nombre}" 
+            class="max-h-full object-contain"
+            onerror="this.src='https://via.placeholder.com/300x200?text=Imagen+no+disponible'"
+          >
+        </div>
+
+        <div class="p-4">
+
+          <h2 class="font-bold text-lg text-slate-800 mb-2">
+            ${item.nombre}
+          </h2>
+
+          <p class="text-sm text-slate-600 mb-3">
+            ${item.funcion}
+          </p>
+
+          <div class="text-xs bg-slate-100 p-2 rounded text-slate-700">
+            <strong>Momento:</strong> ${item.momento}
+          </div>
+
+        </div>
+
+      </div>
+    `;
+
+  });
+
+}
+
+// CARGA INICIAL
+mostrar('cirugia');
+
+</script>
+
+</body>
+</html>
